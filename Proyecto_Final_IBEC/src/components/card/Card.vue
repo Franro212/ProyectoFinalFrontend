@@ -1,0 +1,46 @@
+        <script>
+            export default {
+                props: ['producto'],
+                data () {
+                    return {
+        
+                    }
+                }
+            }
+        </script>
+<template>
+    <div class="containerCard">
+          
+            <div class="container" v-for="(el, i) in producto" :key="i">
+                
+                    <img class="img" :src="el.image" alt="imagen">
+                
+                <div class="contContent">
+                    <h3>{{el.title}}</h3>
+                </div>
+                <button class="button">Agregar al carrito</button>
+            </div>
+        
+    </div>
+</template>
+<style>
+.containerCard{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.container{
+    width: 20rem;
+    height: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:space-evenly;
+    margin: 0 2rem;
+}
+.img{
+    width: 10rem;
+    height: 12rem;
+}
+
+</style>
