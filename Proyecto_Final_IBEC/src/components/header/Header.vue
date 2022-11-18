@@ -1,8 +1,30 @@
+<script>
+export default {
+                props: ['producto'],
+                
+            }
+
+
+            const filtrar = ()=>{
+       return productos.filter((producto)=>
+       producto.toLowerCase().includes(text.value.toLowercase()))
+    }
+
+
+</script>
+
+
+
+
 <template>
 
 <header class="header" >
 <img src="../../assets/logo-removebg-preview.png" alt="logo" class="logo">
-    <input type="search" class="input"/>
+    <input
+     type="search"
+    class="input"
+    v-model="text"
+     placeholder="Buscar articulos..." />
     <nav class="nav">
             <ul class="list">
                 <li><a href="">crea tu cuenta</a></li>

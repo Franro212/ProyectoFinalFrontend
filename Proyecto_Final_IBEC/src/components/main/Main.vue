@@ -1,11 +1,7 @@
         <script>
             export default {
                 props: ['producto'],
-                data () {
-                    return {
-        
-                    }
-                }
+                
             }
         </script>
 <template>
@@ -27,7 +23,9 @@
 .containerCard{
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
+    justify-content: center;
+    gap: 5rem;
+    padding-top: 2rem;
 }
 .container{
     width: 20rem;
@@ -37,6 +35,10 @@
     align-items: center;
     justify-content:space-evenly;
     margin: 0 2rem;
+    
+    border-radius: 2rem;
+    text-align: center;
+    background-color: #ffff;
 }
 .img{
     width: 10rem;
