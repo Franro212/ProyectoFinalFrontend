@@ -1,12 +1,13 @@
 
 <script>
 
-import Header from './components/header/Header.vue';
-import Main from './components/main/Main.vue';
+
+
+import Home from './components/home/Home.vue';
 
 export default {
-        name: "Home",
-        components: { Header, Main },
+        name: "App",
+        components: { Home },
         data () {
             return {
                 productos: [],
@@ -16,8 +17,10 @@ export default {
         beforeCreate() {
             fetch('https://fakestoreapi.com/products')
             .then(res=>res.json())
-            .then(json=> this.productos = json )
-        }
+            .then(json=> this.$store.state.productos = json )
+        },
+        
+        
 
     }
   
@@ -26,15 +29,11 @@ export default {
 
 </script>
 <template>
-<Header :producto="productos"/>
-<main>
-    <Main :producto="productos"/>
+<RouterView/>
+<div>
 
-</main>
-<footer>
-
-</footer>
-
+  <Home/>
+</div>
 
 
 
