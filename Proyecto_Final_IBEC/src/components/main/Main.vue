@@ -5,34 +5,36 @@ export default {
         components: { FooterVue },
         data () {
             return {
-                productos: "",
+                buscar: ''
                 
+
 
             }
         },
         computed: {
-    filteredList() {
-      return this.$store.state.productos.filter(post => {
-        return post.title.toLowerCase().includes(this.search.toLowerCase())
-      })
+   async filtrar() {
+ 
+        return  await this.$store.state.productos.filter(producto => {
+        return producto.nombre.includes(this.buscar);
+      });
+      
     }
   }
-        
+
     }
-   
 
-    
 
-            
+
+
+
         </script>
 <template>
         <header class="header" >
         <img src="../../assets/logo-removebg-preview.png" alt="logo" class="logo">
             <input
-             type="search"
+             type="text"
             class="input"
-            v-model="search"
-            v-on:keyup.enter="filteredList"
+            v-model="buscar"
              placeholder="Buscar articulos..."
             />
             <nav class="nav">
@@ -42,22 +44,22 @@ export default {
                         <li><a href="">mis compras</a></li>
                     </ul>
                 </nav>
-        
+
             </header>
-    <div class="containerCard">
-        
-          
+    <div class="containerCard" >
+
+
             <div class="container" v-for="(el, i) in this.$store.state.productos" :key="i">
-                
+
                     <img class="img" :src="el.image" alt="imagen">
-                
+
                 <div class="contContent">
                     <h3>{{el.title}}</h3>
                 </div>
                 <button class="button">Agregar al carrito</button>
-            </div>     
+            </div>
     </div>
-    <div class="item error" v-if="input&&!buscarProducto().length">
+    <div class="item error" v-if="buscar&&!filtrar().length">
      <p>No se encuentran resultados</p>
   </div>
 <FooterVue/>
@@ -78,7 +80,7 @@ export default {
     align-items: center;
     justify-content:space-evenly;
     margin: 0 2rem;
-    
+
     border-radius: 2rem;
     text-align: center;
     background-color: #ffff;
